@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #0c0d0d;
+            color: white;
+            padding: 1rem;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav .nav-links li {
+            display: inline;
+        }
+
+        nav .nav-links a {
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Main Content */
+        .post-details {
+            flex: 1; /* Ensures this section expands to fill available space */
+            max-width: 1000px; /* Increased width */
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-tags {
+            color: #555;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .post-date {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-content {
+            font-size: 1.3rem;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <div class="logo">Coder Army Blogger</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Post Details Section -->
+    <div class="post-details">
+        <h1 id="postTitle" class="post-title"></h1>
+        <h3 id="postTags" class="post-tags"></h3>
+        <p id="postDate" class="post-date"></p>
+        <p id="postContent" class="post-content"></p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 My Blog. All Rights Reserved. | <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        // Retrieve data from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const title = urlParams.get('title');
+        const content = urlParams.get('content');
+        const tags = urlParams.get('tags');
+        const date = urlParams.get('date');
+
+        // Populate the page with data
+        document.getElementById('postTitle').textContent = title;
+        document.getElementById('postContent').textContent = decodeURIComponent(content);
+        document.getElementById('postTags').textContent = `Tags: ${decodeURIComponent(tags)}`;
+        document.getElementById('postDate').textContent = `Published on: ${new Date(decodeURIComponent(date)).toLocaleDateString()}`;
+    </script>
+</body>
+</html>
